@@ -1,0 +1,431 @@
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================================================== */
+:root {
+  --primary-color: #0b6b02;
+  --primary-hover: #af3a16;
+  --secondary-color: #d60686;
+  --text-dark: #2b2d42;
+  --text-light: #f8f9fa;
+  --bg-light: #f4f7f6;
+  --white: #ffffff;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Container general para envolver y centrar secciones si es necesario */
+header, section, footer {
+  width: 100%;
+}
+
+/* ==========================================================================
+   2. HEADER & NAVEGACIÓN
+   ========================================================================== */
+header {
+  background-color: var(--white);
+  box-shadow: var(--shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--primary-color);
+}
+
+/* ==========================================================================
+   3. SECCIÓN HERO (Banner Principal)
+   ========================================================================== */
+.hero {
+  background: linear-gradient(135deg, var(--primary-color), #0096c7);
+  color: var(--text-light);
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+}
+
+/* Botón Pro */
+.btn {
+  display: inline-block;
+  background-color: var(--white);
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 12px 30px;
+  font-weight: 700;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: var(--transition);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--text-light);
+}
+
+/* ==========================================================================
+   4. SECCIÓN SERVICIOS
+   ========================================================================== */
+.servicios {
+  padding: 60px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.servicios h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: var(--primary-color);
+  position: relative;
+}
+
+/* Tarjetas alineadas con Grid */
+.servicios-grid, /* Añadido por si agrupas las tarjetas en un div en el futuro */
+.servicios {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Contenedor dinámico improvisado para tus divs sueltos */
+.servicios {
+  display: block;
+}
+
+.servicios h2 {
+  margin-bottom: 30px;
+}
+
+.servicios .card {
+  background: var(--white);
+  padding: 25px;
+  margin: 15px auto;
+  max-width: 400px;
+  width: 100%;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border-top: 4px solid var(--primary-color);
+  transition: var(--transition);
+}
+
+.servicios .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Para cuando tengas las tarjetas en una sola fila en pantallas grandes */
+@media (min-width: 768px) {
+  .servicios {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .servicios h2 {
+    grid-column: span 3;
+    text-align: center;
+  }
+  .servicios .card {
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   5. FOOTER
+   ========================================================================== */
+footer {
+  background-color: var(--primary-hover);
+  color: var(--text-light);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+}
+
+/* ==========================================================================
+   6. TOAST NOTIFICACIONES (Del ejercicio anterior)
+   ========================================================================== */
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 24px;
+  border-radius: var(--border-radius);
+  color: #fff;
+  font-weight: bold;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1000;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.toast.success { background-color: #2ec4b6; }
+.toast.error { background-color: #e71d36; }
+/* ==========================================================================
+   7. FORMULARIO DE RESERVAS (citas.html)
+   ========================================================================== */
+.form-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.formulario {
+  background-color: var(--white);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* Espaciado uniforme entre campos */
+}
+
+/* Estilo para todos los campos de entrada */
+.formulario input,
+.formulario select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text-dark);
+  background-color: #fff;
+  transition: var(--transition);
+}
+
+/* Efecto de enfoque profesional */
+.formulario input:focus,
+.formulario select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.15);
+}
+
+/* Botón principal del formulario */
+.formulario button[type="submit"] {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 10px;
+}
+
+.formulario button[type="submit"]:hover {
+  background-color: var(--primary-hover);
+}
+
+/* ==========================================================================
+   8. LISTA DE CITAS REGISTRADAS
+   ========================================================================== */
+.lista-citas {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 5%;
+}
+
+.lista-citas h2 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+/* Contenedor adaptativo en cuadrícula para las tarjetas */
+#lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjetas individuales de citas */
+.cita-card {
+  background-color: var(--white);
+  border-left: 5px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.cita-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cita-card p {
+  font-size: 0.95rem;
+  color: #4a4e69;
+  margin: 0;
+}
+
+.cita-card p strong {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Botones de acción dentro de la tarjeta */
+.cita-card .acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: auto; /* Empuja los botones al fondo de la tarjeta si varía la altura */
+  padding-top: 15px;
+}
+
+.cita-card .btn-edit,
+.cita-card .btn-delete {
+  flex: 1;
+  border: none;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.cita-card .btn-edit {
+  background-color: #e9f5ff;
+  color: var(--primary-color);
+}
+
+.cita-card .btn-edit:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+.cita-card .btn-delete {
+  background-color: #ffeef0;
+  color: #e71d36;
+}
+
+.cita-card .btn-delete:hover {
+  background-color: #e71d36;
+  color: var(--white);
+}
+/* ==========================================================================
+   9. ESTILOS DE LA BARRA DE FILTROS
+   ========================================================================== */
+.filters-container {
+  max-width: 1200px;
+  margin: 0 auto 30px auto;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white);
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+#searchBar {
+  flex: 2;
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: var(--transition);
+}
+
+#searchBar:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 119, 182, 0.1);
+}
+
+#filterServicio {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+#filterServicio:focus {
+  border-color: var(--primary-color);
+}
+
+/* Responsive para la barra de filtros */
+@media (max-width: 600px) {
+  .filters-container {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+}
