@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reservar Cita - Clínica Dental</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header>
+  <h1>Reservar Cita</h1>
+  <nav>
+    <a href="index.html">Inicio</a>
+    <a href="citas.html">Citas</a>
+  </nav>
+</header>
+
+<section class="form-section">
+  <form id="formCita" class="formulario">
+    <input type="text" id="nombre" placeholder="Nombre completo" required>
+    
+    <!-- Restringido a 8 dígitos max -->
+    <input type="text" id="dni" placeholder="DNI (8 dígitos)" maxlength="8" required>
+
+    <input type="date" id="fecha" required>
+
+    <!-- Rango de atención médica -->
+    <input type="time" id="hora" min="08:00" max="18:00" required>
+
+    <select id="servicio" required>
+      <option value="">Selecciona servicio</option>
+      <option value="Limpieza dental">Limpieza dental</option>
+      <option value="Ortodoncia">Ortodoncia</option>
+      <option value="Extracción">Extracción</option>
+    </select>
+
+    <button type="submit">Reservar Cita</button>
+  </form>
+</section>
+
+<section class="lista-citas">
+  <h2>Citas registradas</h2>
+  
+  <!-- BARRA DE FILTROS PRO -->
+  <div class="filters-container">
+    <input type="text" id="searchBar" placeholder="🔍 Buscar por nombre o DNI...">
+    <select id="filterServicio">
+      <option value="">Todos los servicios</option>
+      <option value="Limpieza dental">Limpieza dental</option>
+      <option value="Ortodoncia">Ortodoncia</option>
+      <option value="Extracción">Extracción</option>
+    </select>
+  </div>
+
+  <div id="lista"></div>
+</section>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
